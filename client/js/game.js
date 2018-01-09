@@ -198,72 +198,132 @@ var Game = (function (window) {
 
     var g = new PIXI.Graphics(); // Basic unit
     g.beginFill(0x4286f4);
-    g.lineStyle(7, 0, .1)
-    g.drawPolygon([20, 0, 40, 10, 20, 60, 0, 10, 20, 0])
+    g.lineStyle(2, 0, .1)
+    g.drawPolygon([10, 0, 20, 5, 10, 30, 0, 5, 10, 0])
     g.endFill();
-    g.scale.set(0.5, 0.5)
     stage.addChild(g)
 
     g = new PIXI.Graphics(); // upgrade basic unit
     g.beginFill(0x4286f4);
-    g.lineStyle(7, 0, .1)
-    g.drawPolygon([20, 0, 40, 10, 28, 30, 20, 60, 12, 30, 0, 10, 20, 0])
+    g.lineStyle(2, 0, .1)
+    g.drawPolygon([10, 0, 20, 5, 14, 15, 10, 30, 6, 15, 0, 5, 10, 0])
     g.endFill();
-    g.scale.set(0.5, 0.5)
+
     stage.addChild(g)
     g.position.set(50, 0)
 
     g = new PIXI.Graphics();
     g.beginFill(0x4286f4);
-    g.lineStyle(7, 0, .2)
-    g.drawPolygon([0, 0, 60, 0, 30, 100, 0, 0])
+    g.lineStyle(2, 0, .2)
+    g.drawPolygon([0, 0, 30, 0, 15, 50, 0, 0])
     g.endFill();
-    g.scale.set(0.5, 0.5)
+
     stage.addChild(g)
     g.position.set(0, 50)
 
 
     g = new PIXI.Graphics();
     g.beginFill(0x4286f4);
-    g.lineStyle(7, 0, .2)
-    g.drawPolygon([0, 0, 15, 0, 15, 10, 45, 10, 45, 0, 60, 0, 30, 100, 0, 0])
+    g.lineStyle(2, 0, .2)
+    g.drawPolygon([0, 0, 7, 0, 7, 5, 22, 5, 22, 0, 30, 0, 15, 50, 0, 0])
     g.endFill();
-    g.scale.set(0.5, 0.5)
     stage.addChild(g)
     g.position.set(50, 50)
 
     g = new PIXI.Graphics();
     g.beginFill(0x4286f4);
-    g.lineStyle(7, 0, .1)
-    g.drawRoundedRect(0, 0, 60, 60, 10)
+    g.lineStyle(2, 0, .1)
+    g.drawRoundedRect(0, 0, 30, 30, 5)
     g.endFill();
-    g.scale.set(0.5, 0.5)
     stage.addChild(g)
     g.position.set(0, 120)
 
     g = new PIXI.Graphics();
-    g.lineStyle(7, 0, .1)
+    g.lineStyle(2, 0, .1)
     g.beginFill(0xb7b7b7);
-    g.drawPolygon([0, 0, 55, 0, 65, 30, 55, 60, 0, 60, 0, 0]);
+    g.drawPolygon([0, 0, 27, 0, 32, 15, 27, 30, 0, 30, 0, 0]);
     g.endFill();
-
     g.beginFill(0x4286f4);
-    g.drawRoundedRect(5, 5, 50, 50, 10)
+    g.drawRoundedRect(2, 2, 25, 25, 5)
     g.endFill();
-    g.scale.set(0.5, 0.5)
+    // g.scale.set(0.5, 0.5)
     stage.addChild(g)
     g.position.set(50, 120)
 
 
     g = new PIXI.Graphics();
     g.beginFill(0x4286f4);
-    g.lineStyle(7, 0, .1)
-    g.drawPolygon([0, 0, 60, 0, 60, 60, 0, 60, 0, 0])
+    g.lineStyle(2, 0, .1)
+    g.drawPolygon([0, 0, 15, 5, 30, 0, 15, 30, 0, 0])
     g.endFill();
-    g.scale.set(0.5, 0.5)
     stage.addChild(g)
     g.position.set(0, 170)
 
+    g = new PIXI.Graphics();
+    g.beginFill(0x8e8e8e);
+    g.lineStyle(2, 0, .1)
+    g.drawPolygon([0, 0, 15, 5, 30, 0, 15, 30, 0, 0])
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(50, 170)
 
+    g = new PIXI.Graphics();
+    g.beginFill(0x727272);
+    g.lineStyle(1, 0, .2)
+    g.drawRect(-3, -3, 15, 6)
+    g.drawCircle(0, 0, 6)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(200, 10)
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x727272);
+    g.lineStyle(1, 0, .2)
+    g.drawRect(-4, -5, 20, 10)
+    g.drawCircle(0, 0, 8)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(250, 10)
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x727272);
+    g.lineStyle(1, 0, .2)
+    g.drawRect(-4, -4, 25, 8)
+    g.drawCircle(0, 0, 8)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(300, 10)
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x727272);
+    g.lineStyle(1, 0, .2)
+    g.drawRect(-4, 0, 23, 6);
+    g.drawRect(-4, -6, 23, 6);
+    g.drawCircle(0, 0, 8)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(200, 60)
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x727272);
+    g.lineStyle(1, 0, .2)
+    g.drawRect(-4, -4, 15, 8)
+    g.drawRect(11, -4, 3, 8)
+    g.drawRect(14, -4, 4, 8)
+    g.drawCircle(0, 0, 8)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(250, 60)
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x727272);
+    g.drawCircle(0, 0, 8)
+    g.lineStyle(1, 0, .2)
+    g.drawRect(-7, -4, 25, 8)
+    g.drawCircle(0, 0, 3)
+    g.drawRect(0, -1, 3, 2)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(300, 60)
     render();
 })(window);
