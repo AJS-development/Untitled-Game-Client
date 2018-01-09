@@ -184,7 +184,7 @@ var Game = (function (window) {
 
 
     function gameLoop(diffT) {
-
+        render();
     }
 
     function timerLoop() {
@@ -194,5 +194,76 @@ var Game = (function (window) {
         timestamp = now;
     }
 
-    timerLoop();
+    //timerLoop();
+
+    var g = new PIXI.Graphics(); // Basic unit
+    g.beginFill(0x4286f4);
+    g.lineStyle(7, 0, .1)
+    g.drawPolygon([20, 0, 40, 10, 20, 60, 0, 10, 20, 0])
+    g.endFill();
+    g.scale.set(0.5, 0.5)
+    stage.addChild(g)
+
+    g = new PIXI.Graphics(); // upgrade basic unit
+    g.beginFill(0x4286f4);
+    g.lineStyle(7, 0, .1)
+    g.drawPolygon([20, 0, 40, 10, 28, 30, 20, 60, 12, 30, 0, 10, 20, 0])
+    g.endFill();
+    g.scale.set(0.5, 0.5)
+    stage.addChild(g)
+    g.position.set(50, 0)
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x4286f4);
+    g.lineStyle(7, 0, .2)
+    g.drawPolygon([0, 0, 60, 0, 30, 100, 0, 0])
+    g.endFill();
+    g.scale.set(0.5, 0.5)
+    stage.addChild(g)
+    g.position.set(0, 50)
+
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x4286f4);
+    g.lineStyle(7, 0, .2)
+    g.drawPolygon([0, 0, 15, 0, 15, 10, 45, 10, 45, 0, 60, 0, 30, 100, 0, 0])
+    g.endFill();
+    g.scale.set(0.5, 0.5)
+    stage.addChild(g)
+    g.position.set(50, 50)
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x4286f4);
+    g.lineStyle(7, 0, .1)
+    g.drawRoundedRect(0, 0, 60, 60, 10)
+    g.endFill();
+    g.scale.set(0.5, 0.5)
+    stage.addChild(g)
+    g.position.set(0, 120)
+
+    g = new PIXI.Graphics();
+    g.lineStyle(7, 0, .1)
+    g.beginFill(0xb7b7b7);
+    g.drawPolygon([0, 0, 55, 0, 65, 30, 55, 60, 0, 60, 0, 0]);
+    g.endFill();
+
+    g.beginFill(0x4286f4);
+    g.drawRoundedRect(5, 5, 50, 50, 10)
+    g.endFill();
+    g.scale.set(0.5, 0.5)
+    stage.addChild(g)
+    g.position.set(50, 120)
+
+
+    g = new PIXI.Graphics();
+    g.beginFill(0x4286f4);
+    g.lineStyle(7, 0, .1)
+    g.drawPolygon([0, 0, 60, 0, 60, 60, 0, 60, 0, 0])
+    g.endFill();
+    g.scale.set(0.5, 0.5)
+    stage.addChild(g)
+    g.position.set(0, 170)
+
+
+    render();
 })(window);
