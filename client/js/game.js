@@ -81,6 +81,8 @@ var Game = (function (window) {
         width: 0,
         height: 0
     }
+
+    let unitData = Exports.getObjectData();
     const lbConfig = {
         type: 0,
         title: "Leaderboard",
@@ -123,12 +125,7 @@ var Game = (function (window) {
     };
 
     let Colors = [0x4286f4, 0xfc2a2a, 0x51f704, 0x347218, 0xf6ff00, 0xad00cc, 0x5500cc, 0xff3fc5, 0x6ecde5, 0xff832d, 0x78e2c7, 0xeae096]
-    let genericSprites = Exports.getGenericSprites();
-    let coloredSprites = [];
 
-    Colors.forEach((color) => {
-        coloredSprites.push(Exports.getColoredSprites(color));
-    });
 
     if (dev) console.log("Dev Mode");
 
@@ -191,6 +188,14 @@ var Game = (function (window) {
     render();
 
 
+    let genericTextures = Exports.getGenericSprites(renderer);
+    let coloredTextures = [];
+
+    Colors.forEach((color) => {
+        coloredTextures.push(Exports.getColoredSprites(color, renderer));
+    });
+
+
     function gameLoop(diffT) {
         render();
     }
@@ -204,7 +209,67 @@ var Game = (function (window) {
 
     //timerLoop();
 
+    var offX = 50,
+        offY = 50;
 
+
+    coloredTextures[0].forEach((texture) => {
+        var sprite = PIXI.Sprite.from(texture[0])
+        sprite.position.set(offX + texture[1], offY + +texture[2])
+        stage.addChild(sprite)
+
+        offX += 50;
+
+        if (offX === 1200) {
+            offX = 50;
+            offY += 50;
+        }
+    })
+
+
+    genericTextures.forEach((texture) => {
+        var sprite = PIXI.Sprite.from(texture[0])
+        sprite.position.set(offX + texture[1], offY + +texture[2])
+
+        stage.addChild(sprite)
+
+        offX += 50;
+        if (offX === 1200) {
+            offX = 50;
+            offY += 50;
+        }
+    })
+
+    offY += 100;
+    offX = 50;
+
+    unitData.forEach((unit) => {
+        //return
+        var container = new PIXI.Container();
+        unit.render.forEach((id) => {
+            var text = getTexture(0, id);
+            var sprite = PIXI.Sprite.from(text[0])
+            sprite.position.set(text[1], text[2])
+            container.addChild(sprite)
+        });
+
+        container.position.set(offX, offY)
+        stage.addChild(container)
+
+        offX += 50;
+        if (offX === 1200) {
+            offX = 50;
+            offY += 50;
+        }
+    })
+
+    function getTexture(color, id) {
+        if (id < 0) {
+            return genericTextures[-id - 1];
+        } else {
+            return coloredTextures[color][id];
+        }
+    }
 
     render();
 })(window);
