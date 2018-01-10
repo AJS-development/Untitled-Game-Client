@@ -20,6 +20,26 @@
 
  window.Exports = {
 
+     getObjectData: function () {
+
+         return [ // 0 = towers, 1 = troops, 2 = 
+             {
+                 objType: 0,
+                 id: 0,
+                 name: 'Factory',
+                 description: 'Generate parts for use in building things',
+                 cost: 50,
+                 base: 0,
+                 turret: 0,
+                 speed: 0,
+                 health: 0,
+                 attack: 0,
+                 upgrades: []
+             },
+         ]
+
+
+     },
      getGenericSprites: function () {
          var sprites = [];
 
@@ -74,7 +94,15 @@
          g.endFill();
          sprites.push(g)
 
-
+         g = new PIXI.Graphics();
+         g.beginFill(0x727272);
+         g.drawCircle(0, 0, 8)
+         g.lineStyle(1, 0, .2)
+         g.drawRect(-7, -4, 25, 8)
+         g.drawCircle(0, 0, 3)
+         g.drawRect(0, -1, 3, 2)
+         g.endFill();
+         sprites.push(g)
 
          return sprites;
      },
@@ -136,15 +164,7 @@
          g.endFill();
          sprites.push(g)
 
-         g = new PIXI.Graphics();
-         g.beginFill(0x727272);
-         g.drawCircle(0, 0, 8)
-         g.lineStyle(1, 0, .2)
-         g.drawRect(-7, -4, 25, 8)
-         g.drawCircle(0, 0, 3)
-         g.drawRect(0, -1, 3, 2)
-         g.endFill();
-         sprites.push(g)
+
 
          g = new PIXI.Graphics();
          g.lineStyle(2, 0, .1)

@@ -122,6 +122,14 @@ var Game = (function (window) {
         roundPixels: true
     };
 
+    let Colors = [0x4286f4, 0xfc2a2a, 0x51f704, 0x347218, 0xf6ff00, 0xad00cc, 0x5500cc, 0xff3fc5, 0x6ecde5, 0xff832d, 0x78e2c7, 0xeae096]
+    let genericSprites = Exports.getGenericSprites();
+    let coloredSprites = [];
+
+    Colors.forEach((color) => {
+        coloredSprites.push(Exports.getColoredSprites(color));
+    });
+
     if (dev) console.log("Dev Mode");
 
 
@@ -171,7 +179,7 @@ var Game = (function (window) {
         alert("Could not establish renderer. Does your browser support WebGL?");
         return;
     }
-    renderer.backgroundColor = 0xFFFFFF;
+    renderer.backgroundColor = 0xf7f7f7;
     //Add the canvas to the HTML document
     $("#gameContainer").append(renderer.view);
 
@@ -196,21 +204,7 @@ var Game = (function (window) {
 
     //timerLoop();
 
-    var sprites = Exports.getGenericSprites();
-    var offX = 50,
-        offY = 50;
 
-    sprites = sprites.concat(Exports.getColoredSprites(0x4286f4))
-    sprites.forEach((sprite) => {
-        sprite.position.set(offX, offY)
-        stage.addChild(sprite)
 
-        offX += 50;
-
-        if (offX === 500) {
-            offX = 50;
-            offY += 50;
-        }
-    })
     render();
 })(window);
