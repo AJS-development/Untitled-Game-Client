@@ -324,6 +324,88 @@ var Game = (function (window) {
     g.drawRect(0, -1, 3, 2)
     g.endFill();
     stage.addChild(g)
-    g.position.set(300, 60)
+    g.position.set(300, 60);
+
+    g = new PIXI.Graphics();
+    g.lineStyle(2, 0, .1)
+    g.beginFill(0x4286f4);
+    g.drawCircle(0, 0, 15)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(400, 15)
+
+    g = new PIXI.Graphics();
+    g.lineStyle(2, 0, .1)
+    g.beginFill(0x4286f4);
+    g.drawPolygon(getStarVert(15, 11, 7))
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(450, 15)
+
+
+    g = new PIXI.Graphics();
+    g.lineStyle(2, 0, .1)
+    g.beginFill(0x4286f4);
+    g.drawPolygon(getPolyVert(15, 6))
+    g.endFill();
+    g.beginFill(0x727272);
+    g.drawPolygon(getPolyVert(15, 3, Math.PI / 2))
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(500, 15)
+
+    g = new PIXI.Graphics();
+    g.lineStyle(2, 0, .1)
+    g.beginFill(0x4286f4);
+    g.drawPolygon(getPolyVert(15, 6))
+    g.endFill();
+    g.beginFill(0x727272);
+    g.drawPolygon(getPolyVert(12, 6, Math.PI / 2))
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(550, 15)
+
+    g = new PIXI.Graphics();
+    g.lineStyle(2, 0, .1)
+    g.beginFill(0x4286f4);
+    g.drawRect(-15, -10, 30, 25)
+    g.endFill();
+    g.beginFill(0x727272);
+    g.drawRect(-10, -15, 20, 5)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(400, 65)
+
+    g = new PIXI.Graphics();
+    g.lineStyle(2, 0, .1)
+    g.beginFill(0x4286f4);
+    g.drawRect(-15, -10, 30, 25)
+    g.endFill();
+    g.lineStyle(1, 0, .1)
+    g.beginFill(0x727272);
+    g.drawRect(-15, -15, 15, 5)
+    g.drawRect(0, -15, 15, 5)
+    g.endFill();
+    stage.addChild(g)
+    g.position.set(450, 65)
+
+    function getStarVert(radius, radius2, points) {
+        var vert = [];
+        points = points * 2;
+        var angle = Math.PI * 2 / points;
+        for (var i = 0; i < points; i++)
+            if (i % 2 === 0) vert.push(radius * Math.cos(angle * i), radius * Math.sin(angle * i));
+            else vert.push(radius2 * Math.cos(angle * i), radius2 * Math.sin(angle * i));
+        vert.push(radius, 0)
+        return vert;
+    }
+
+    function getPolyVert(radius, points, off) {
+        var vert = [];
+        off = off || 0;
+        var angle = Math.PI * 2 / points;
+        for (var i = 0; i < points; i++) vert.push(radius * Math.cos(angle * i + off), radius * Math.sin(angle * i + off))
+        return vert;
+    }
     render();
 })(window);
