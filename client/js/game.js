@@ -215,7 +215,8 @@ var Game = (function (window) {
 
     coloredTextures[0].forEach((texture) => {
         var sprite = PIXI.Sprite.from(texture[0])
-        sprite.position.set(offX + texture[1], offY + +texture[2])
+        sprite.pivot.set(-texture[1], -texture[2])
+        sprite.position.set(offX, offY)
         stage.addChild(sprite)
 
         offX += 50;
@@ -229,7 +230,8 @@ var Game = (function (window) {
 
     genericTextures.forEach((texture) => {
         var sprite = PIXI.Sprite.from(texture[0])
-        sprite.position.set(offX + texture[1], offY + +texture[2])
+        sprite.pivot.set(-texture[1], -texture[2])
+        sprite.position.set(offX, offY)
 
         stage.addChild(sprite)
 
@@ -249,7 +251,7 @@ var Game = (function (window) {
         unit.render.forEach((id) => {
             var text = getTexture(0, id);
             var sprite = PIXI.Sprite.from(text[0])
-            sprite.position.set(text[1], text[2])
+            sprite.pivot.set(-text[1], -text[2])
             container.addChild(sprite)
         });
 
