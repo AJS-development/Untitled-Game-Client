@@ -26,7 +26,7 @@
              {
                  objType: 0,
                  id: 0,
-                 name: 'Factory',
+                 name: 'Drill',
                  description: 'Generate parts for use in building things',
                  cost: 50,
                  render: [9],
@@ -38,7 +38,7 @@
              {
                  objType: 0,
                  id: 1,
-                 name: 'Advanced Factory',
+                 name: 'Advanced Drill',
                  description: 'Generate parts for use in building things quicker',
                  cost: 100,
                  render: [10],
@@ -55,7 +55,7 @@
                  cost: 50,
                  render: [7],
                  speed: 0,
-                 health: 100,
+                 health: 150,
                  damageFactor: 0.3,
                  upgrades: [3]
              },
@@ -64,10 +64,10 @@
                  id: 3,
                  name: 'Reinforced Barrier',
                  description: 'Has higher health and higher damage',
-                 cost: 50,
+                 cost: 200,
                  render: [8],
                  speed: 0,
-                 health: 200,
+                 health: 250,
                  damageFactor: 0.5,
                  upgrades: []
              },
@@ -78,8 +78,9 @@
                  description: 'Power over fire rate',
                  cost: 50,
                  render: [7, -5, -4],
+                 turrets: [1],
                  speed: 0,
-                 health: 20,
+                 health: 50,
                  damageFactor: 1,
                  upgrades: [5, 6]
              },
@@ -88,10 +89,11 @@
                  id: 5,
                  name: 'Super Cannon',
                  description: 'Higher power and range',
-                 cost: 50,
+                 cost: 150,
                  render: [7, -6, -4],
+                 turrets: [1],
                  speed: 0,
-                 health: 20,
+                 health: 50,
                  damageFactor: 1,
                  upgrades: []
              },
@@ -100,10 +102,11 @@
                  id: 6,
                  name: 'Double Cannon',
                  description: 'Target two things at once',
-                 cost: 50,
+                 cost: 150,
                  render: [7, -5, -3, -4],
+                 turrets: [1, 2],
                  speed: 0,
-                 health: 20,
+                 health: 50,
                  damageFactor: 1,
                  upgrades: []
              },
@@ -114,8 +117,9 @@
                  description: 'A tower with a gun on top',
                  cost: 50,
                  render: [7, -3, -4],
+                 turrets: [1],
                  speed: 0,
-                 health: 20,
+                 health: 50,
                  damageFactor: 1,
                  upgrades: [8, 10]
              },
@@ -124,10 +128,11 @@
                  id: 8,
                  name: 'Machine gun',
                  description: 'A tower with a fast shooting machine gun',
-                 cost: 50,
-                 render: [7, -8, -4],
+                 cost: 100,
+                 render: [7, -8, -14, -4],
+                 turrets: [1],
                  speed: 0,
-                 health: 20,
+                 health: 50,
                  damageFactor: 1,
                  upgrades: [9]
              },
@@ -136,10 +141,11 @@
                  id: 9,
                  name: 'Gatlin gun',
                  description: 'A tower with a even faster gatlin gun',
-                 cost: 50,
+                 cost: 150,
                  render: [7, -9, -4],
+                 turrets: [1],
                  speed: 0,
-                 health: 20,
+                 health: 50,
                  damageFactor: 1,
                  upgrades: []
              },
@@ -148,10 +154,11 @@
                  id: 10,
                  name: 'Long gun',
                  description: 'Longer range and reload',
-                 cost: 50,
+                 cost: 100,
                  render: [7, -10, -4],
+                 turrets: [1],
                  speed: 0,
-                 health: 20,
+                 health: 50,
                  damageFactor: 1,
                  upgrades: [11]
              },
@@ -160,14 +167,182 @@
                  id: 11,
                  name: 'Scope gun',
                  description: 'Longer range and reload',
-                 cost: 50,
+                 cost: 150,
                  render: [7, -4, -10, -11],
+                 turrets: [2],
                  speed: 0,
-                 health: 20,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 0,
+                 id: 12,
+                 name: 'Storage',
+                 description: 'Store more troops',
+                 cost: 50,
+                 render: [16],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 0,
+                 id: 14,
+                 name: 'Research',
+                 description: 'Research improvements for your military',
+                 cost: 100,
+                 render: [17],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: [15, 16, 17, 18, 19, 20]
+             },
+             {
+                 objType: 2,
+                 id: 15,
+                 name: 'Brutal fighters',
+                 description: 'Fighters give more damage',
+                 cost: 500,
+                 render: [17],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 2,
+                 id: 16,
+                 name: 'Reinforced Tanks',
+                 description: 'Tanks have more sheilding',
+                 cost: 1000,
+                 render: [17],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 2,
+                 id: 17,
+                 name: 'Turret Tanks',
+                 description: 'Tanks have turret guns',
+                 cost: 1500,
+                 render: [17],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 2,
+                 id: 18,
+                 name: 'Speedy rammers',
+                 description: 'Rammers are faster',
+                 cost: 2000,
+                 render: [17],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 2,
+                 id: 19,
+                 name: 'Defending Rammers',
+                 description: 'Gives Rammers guns',
+                 cost: 2500,
+                 render: [17],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 2,
+                 id: 20,
+                 name: 'Stronger Drillers',
+                 description: 'Drillers have more health',
+                 cost: 2500,
+                 render: [17],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 0,
+                 id: 21,
+                 name: 'Barracks',
+                 description: 'Generates fast fighters',
+                 cost: 100,
+                 render: [11, -12],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: [22, 23, 25, 26]
+             },
+             {
+                 objType: 0,
+                 id: 22,
+                 name: 'Efficient Barraks',
+                 description: 'Quickly generates fighters faster',
+                 cost: 500,
+                 render: [11, -13],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 0,
+                 id: 23,
+                 name: 'Driller Factory',
+                 description: 'Generates stronger and more damaging Drillers',
+                 cost: 1000,
+                 render: [15, -12],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: [24]
+             },
+             {
+                 objType: 0,
+                 id: 24,
+                 name: 'Efficient Driller Factory',
+                 description: 'Generates stronger and more damaging Drillers faster',
+                 cost: 1000,
+                 render: [15, -13],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 0,
+                 id: 25,
+                 name: 'Tank Factory',
+                 description: 'Generates versatile Tanks',
+                 cost: 2000,
+                 render: [13, -12],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 0,
+                 id: 26,
+                 name: 'Rammer Factory',
+                 description: 'Generates strong but slow Rammers',
+                 cost: 3000,
+                 render: [14, -12],
+                 speed: 0,
+                 health: 50,
                  damageFactor: 1,
                  upgrades: []
              }
-
          ]
 
 
@@ -231,7 +406,7 @@
          g.beginFill(0x727272);
          g.lineStyle(1, 0, .2)
          g.drawRect(0, 0, 19, 6);
-         g.drawRect(0, -6, 19, 6);
+         //g.drawRect(0, -6, 19, 6);
          g.endFill();
          sprites.push(g)
 
@@ -275,7 +450,13 @@
          g.endFill();
          sprites.push(g)
 
-
+         g = new PIXI.Graphics();
+         g.beginFill(0x727272);
+         g.lineStyle(1, 0, .2)
+         //  g.drawRect(0, 0, 19, 6);
+         g.drawRect(0, -6, 19, 6);
+         g.endFill();
+         sprites.push(g)
          return sprites.map((sprite) => {
              return [renderer.generateTexture(sprite, undefined, 2), sprite._bounds.minX, sprite._bounds.minY];
          });
@@ -343,7 +524,7 @@
          g = new PIXI.Graphics();
          g.lineStyle(2, 0, .1)
          g.beginFill(color);
-         g.drawCircle(0, 0, 15)
+         g.drawCircle(0, 0, 13)
          g.endFill();
          sprites.push(g)
 
@@ -435,9 +616,20 @@
          g.beginFill(color);
          g.drawPolygon(getPolyVert(15, 6))
          g.endFill();
-
          g.drawPolygon(getPolyVert(10, 6))
+         sprites.push(g)
 
+         g = new PIXI.Graphics();
+         g.lineStyle(2, 0, .1)
+         g.beginFill(color);
+         g.drawPolygon(getPolyVert(17, 8, Math.PI / 8))
+         g.endFill();
+         g.beginFill(0x727272);
+         g.drawPolygon(getPolyVert(15, 8))
+         g.endFill();
+         g.beginFill(color);
+         g.drawPolygon(getPolyVert(12, 8, Math.PI / 8))
+         g.endFill();
          sprites.push(g)
 
          return sprites.map((sprite) => {
