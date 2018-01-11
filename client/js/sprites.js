@@ -130,7 +130,7 @@
                  description: 'A tower with a fast shooting machine gun',
                  cost: 100,
                  render: [7, -8, -14, -4],
-                 turrets: [1],
+                 turrets: [1, 2],
                  speed: 0,
                  health: 50,
                  damageFactor: 1,

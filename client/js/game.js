@@ -74,14 +74,13 @@ Map.prototype.peek = function () {
 var Game = (function (window) {
     const dev = false;
     let Players = new Map();
-    let Units = [];
+    let Units = new Map();
     let viewBox = {
         x: 0,
         y: 0,
         width: 0,
         height: 0
     }
-
     let unitData = Exports.getObjectData();
     const lbConfig = {
         type: 0,
@@ -195,8 +194,55 @@ var Game = (function (window) {
         coloredTextures.push(Exports.getColoredSprites(color, renderer));
     });
 
+    class Player {
+        constructor(id, color, x, y) {
+            this.id = id;
+            this.color = color;
+            this.x = x;
+            this.y = y;
+            this.nodes = new Map();
+        }
+
+    }
+
+    class Unit {
+        constructor(id, type, x, y, owner) {
+            this.id = id;
+            this.type = type;
+            this.x = x;
+            this.y = y;
+            this.owner = owner;
+            this.data = unitData[this.type];
+
+            this.owner.nodes.set(this.id, this);
+
+            var container = this.sprite = new PIXI.Container();
+            this.data.render.forEach((id) => {
+                var text = getTexture(this.owner.color, id);
+                var sprite = PIXI.Sprite.from(text[0]);
+                sprite.pivot.set(-text[1], -text[2]);
+                container.addChild(sprite)
+            });
+            stage.addChild(container);
+            container.position.set(x, y);
+        }
+        shoot() {
+
+        }
+        update(now) {
+            if (this.data.turrets) {
+                this.data.turrets.forEach((turret, i) => {
+                    this.sprite.children[turret].position.x = Math.floor((Math.sin(timestamp / 100 + Math.PI / 2 * i)) * -1.5)
+                })
+            }
+        }
+    }
 
     function gameLoop(diffT) {
+
+        Units.forEach((unit) => {
+            unit.update()
+        })
         render();
     }
 
@@ -206,64 +252,24 @@ var Game = (function (window) {
         gameLoop(now - timestamp)
         timestamp = now;
     }
+    timerLoop();
+    var player = new Player(0, 0, 0, 0);
 
-    //timerLoop();
+    var X = 50;
+    var Y = 50;
 
-    var offX = 50,
-        offY = 50;
+    unitData.forEach((unit, i) => {
+        var newunit = new Unit(i, i, X, Y, player);
+        Units.set(i, newunit);
 
-
-    coloredTextures[0].forEach((texture) => {
-        var sprite = PIXI.Sprite.from(texture[0])
-        sprite.pivot.set(-texture[1], -texture[2])
-        sprite.position.set(offX, offY)
-        stage.addChild(sprite)
-
-        offX += 50;
-
-        if (offX === 1200) {
-            offX = 50;
-            offY += 50;
+        X += 50;
+        if (X >= 1000) {
+            X = 50;
+            Y += 50;
         }
     })
 
 
-    genericTextures.forEach((texture) => {
-        var sprite = PIXI.Sprite.from(texture[0])
-        sprite.pivot.set(-texture[1], -texture[2])
-        sprite.position.set(offX, offY)
-
-        stage.addChild(sprite)
-
-        offX += 50;
-        if (offX === 1200) {
-            offX = 50;
-            offY += 50;
-        }
-    })
-
-    offY += 100;
-    offX = 50;
-
-    unitData.forEach((unit) => {
-        //return
-        var container = new PIXI.Container();
-        unit.render.forEach((id) => {
-            var text = getTexture(0, id);
-            var sprite = PIXI.Sprite.from(text[0])
-            sprite.pivot.set(-text[1], -text[2])
-            container.addChild(sprite)
-        });
-
-        container.position.set(offX, offY)
-        stage.addChild(container)
-
-        offX += 50;
-        if (offX === 1200) {
-            offX = 50;
-            offY += 50;
-        }
-    })
 
     function getTexture(color, id) {
         if (id < 0) {
