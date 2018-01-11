@@ -276,6 +276,7 @@ var Game = (function (window) {
 
 
 
+
     function getTexture(color, id) {
         if (id < 0) {
             return genericTextures[-id - 1];

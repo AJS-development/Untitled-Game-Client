@@ -169,7 +169,7 @@
                  description: 'Longer range and reload',
                  cost: 150,
                  render: [7, -4, -10, -11],
-                 turrets: [2],
+                 turrets: [2, 3],
                  speed: 0,
                  health: 50,
                  damageFactor: 1,
@@ -338,6 +338,18 @@
                  description: 'Generates strong but slow Rammers',
                  cost: 3000,
                  render: [14, -12],
+                 speed: 0,
+                 health: 50,
+                 damageFactor: 1,
+                 upgrades: []
+             },
+             {
+                 objType: 0,
+                 id: 27,
+                 name: 'HQ',
+                 description: 'Headquarters',
+                 cost: 0,
+                 render: [18],
                  speed: 0,
                  health: 50,
                  damageFactor: 1,
@@ -629,6 +641,13 @@
          g.endFill();
          g.beginFill(color);
          g.drawPolygon(getPolyVert(12, 8, Math.PI / 8))
+         g.endFill();
+         sprites.push(g)
+
+         g = new PIXI.Graphics();
+         g.lineStyle(2, 0, .1)
+         g.beginFill(color);
+         g.drawCircle(0, 0, 50)
          g.endFill();
          sprites.push(g)
 
