@@ -232,8 +232,13 @@ var Game = (function (window) {
         update(now) {
             if (this.data.turrets) {
                 this.data.turrets.forEach((turret, i) => {
-                    this.sprite.children[turret].position.x = Math.floor((Math.sin(timestamp / 100 + Math.PI / 2 * i)) * -1.5)
+                    var d = Math.floor((Math.sin(timestamp / 100 + Math.PI / 2 * i)) * -1.5);
+                    var rot = this.sprite.children[turret].rotation = Math.PI * (Math.sin(timestamp / 1000) + 1);
+                    this.sprite.children[turret].position.set(Math.cos(rot) * d, Math.sin(rot) * d);
+
                 })
+
+
             }
         }
     }
