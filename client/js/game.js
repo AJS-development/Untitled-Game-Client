@@ -77,7 +77,7 @@ var Game = (function (window) {
     let Units = new Map();
     let viewBox = {
         x: 500,
-        y: 500,
+        y: 200,
         width: 0,
         height: 0
     }
@@ -364,7 +364,7 @@ var Game = (function (window) {
 
         })
     }
-
+    // INSERT PROTOCOL
     window.loaded();
 
 })(window);
