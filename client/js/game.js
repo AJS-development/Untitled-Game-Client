@@ -76,8 +76,8 @@ var Game = (function (window) {
     let Players = new Map();
     let Units = new Map();
     let viewBox = {
-        x: 0,
-        y: 0,
+        x: 500,
+        y: 500,
         width: 0,
         height: 0
     }

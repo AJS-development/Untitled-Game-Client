@@ -29,11 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 $('#titleScreen > .fa-spinner').show();
                 mode = 1;
             } else {
+                $('#titleScreen').hide();
 
             }
         }
     })
 }, false);
+
+
 
 window.loaded = function () {
     $('#titleScreen > .fa-spinner').hide();
