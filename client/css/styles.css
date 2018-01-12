@@ -1,8 +1,73 @@
 #gameContainer,
-#gameContainer>canvas {
+#gameContainer>canvas,
+#titleScreen {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+}
+
+#titleScreen {
+    background-color: floralwhite;
+    padding-top: 250px;
+}
+
+#titleScreen>h1,
+#titleScreen>.fa-spinner {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
+
+#titleScreen>.fa-spinner {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+#titleScreen>h1 {
+    font-family: 'Monoton', cursive;
+    font-size: 80px;
+    padding: 0;
+    margin: 0;
+}
+
+#username,
+#play,
+#server {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    text-align: center;
+    left: 50%;
+    padding: 10px;
+    width: 300px;
+}
+
+#server {
+    top: 55%;
+}
+
+#username {
+    top: 35%;
+    height: 20px;
+    text-align: center;
+    transform: translate(-50%, -100%);
+    width: 0px;
+    display: none;
+}
+
+#play {
+    top: 45%;
+    background-color: coral;
+    cursor: pointer;
+    height: 20px;
+    width: 0px;
+    display: none;
+}
+
+#play:hover {
+    background-color: chocolate;
 }

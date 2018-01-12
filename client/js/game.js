@@ -91,7 +91,10 @@ var Game = (function (window) {
         fillStyle: "#000000",
         teamColors: ["#333333", "#FF3333", "#33FF33", "#3333FF"]
     }
-
+    let mouse = {
+        x: 0,
+        y: 0
+    }
     let sqrtLib = [];
 
     for (var i = 0; i < 1000000; i++) {
@@ -116,6 +119,7 @@ var Game = (function (window) {
     let performance = window.performance || Date;
     let timestamp = performance.now();
 
+    let User = null;
     const renderOptions = {
         autoResize: true,
         resolution: 2,
@@ -244,10 +248,16 @@ var Game = (function (window) {
     }
 
     function gameLoop(diffT) {
-
+        var newMouse = renderer.plugins.interaction.mouse.global
+        if (newMouse.x !== mouse.x || newMouse.y !== mouse.y) {
+            mouse.x = newMouse.x;
+            mouse.y = newMouse.y;
+        }
         Units.forEach((unit) => {
             unit.update()
         })
+
+        moveCamera();
         render();
     }
 
@@ -262,6 +272,30 @@ var Game = (function (window) {
 
     var X = 50;
     var Y = 50;
+    coloredTextures[0].forEach((text) => {
+        var s = PIXI.Sprite.from(text[0]);
+        stage.addChild(s);
+        s.pivot.set(-text[1], -text[1]);
+        s.position.set(X, Y)
+
+        X += 50;
+        if (X >= 1000) {
+            X = 50;
+            Y += 50;
+        }
+    })
+    genericTextures.forEach((text) => {
+        var s = PIXI.Sprite.from(text[0]);
+        stage.addChild(s);
+        s.pivot.set(-text[1], -text[1]);
+        s.position.set(X, Y)
+
+        X += 50;
+        if (X >= 1000) {
+            X = 50;
+            Y += 50;
+        }
+    })
 
     unitData.forEach((unit, i) => {
         var newunit = new Unit(i, i, X, Y, player);
@@ -275,7 +309,21 @@ var Game = (function (window) {
     })
 
 
+    function moveCamera() {
+        stage.pivot.set(viewBox.x, viewBox.y)
+    }
 
+    function resize() {
+        var dim = getDim();
+        stage.position.set(dim.width >> 1, dim.height >> 1)
+    }
+
+    function getDim() {
+        return {
+            width: renderer.width / 2,
+            height: renderer.height / 2
+        };
+    }
 
     function getTexture(color, id) {
         if (id < 0) {
@@ -284,6 +332,39 @@ var Game = (function (window) {
             return coloredTextures[color][id];
         }
     }
-
+    resize();
+    moveCamera();
     render();
+
+    function connect(url) {
+        socket = new SimpleSocket(url)
+        socketEvents(socket)
+    }
+
+    function socketEvents(socket) {
+        socket.on('connection', function () {
+
+        })
+        socket.on('disconnect', function () {
+
+        })
+        socket.on('error', function () {
+
+        })
+        socket.on('addUser', function () {
+
+        });
+        socket.on('removeUser', function () {
+
+        });
+        socket.on('update', function (fastBuffer) {
+
+        });
+        socket.on('protocol', function (protocol) {
+
+        })
+    }
+
+    window.loaded();
+
 })(window);

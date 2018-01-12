@@ -7,15 +7,34 @@
     <script src="js/pixi.js"></script>
     <script src="js/AQuery.js"></script>
     <link type="text/css" rel='stylesheet' href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body>
     <div id="gameContainer">
 
     </div>
-    <script src="js/sprites.js"></script>
-    <script src="js/game.js"></script>
+    <div id="chat">
 
+    </div>
+    <div id="leaderboard">
+
+    </div>
+
+    <div id="titleScreen">
+        <h1>TowerAtta.tk</h1>
+        <i class='fa fa-spinner fa-spin'></i>
+        <input id='server' type='text' placeholder="http://[ip]:[port]" value='http://localhost:8080'>
+
+        <input id='username' type='text' placeholder="An Unknown Player">
+        <div id='play'>PLAY</div>
+    </div>
+    <script src="js/sprites.js"></script>
+    <script src="js/connector.js"></script>
+
+    <div id="script">
+    </div>
 </body>
 
 </html>

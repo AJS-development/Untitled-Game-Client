@@ -2052,6 +2052,7 @@
 
         function setCSSFrac(item, property, fraction) {
             var out = [];
+            // console.log(fraction)
 
             function recurse(arr) {
                 arr.forEach((property) => {
@@ -2083,6 +2084,7 @@
             }
             recurse(property.originalValue)
             out.pop();
+            //console.log(property, out.join(''))
             setProperty(item.element, property, out.join(''));
 
         }
@@ -2142,7 +2144,8 @@
                 obj.push([3, match[1]]);
                 parseCSS(match[2], obj);
             } else {
-                var number = string.match(/^([0-9\.]*)(em|ex|%|px|cm|mm|in|pt|pc|ch|rem|vh|vw|vmin|vmax|s|ms|deg|grad|rad|turn|Q)?(?: (.*))?/);
+                var number = string.match(/^(\-?[0-9\.]*)(em|ex|%|px|cm|mm|in|pt|pc|ch|rem|vh|vw|vmin|vmax|s|ms|deg|grad|rad|turn|Q)?(?: (.*))?/);
+                //console.log(number)
                 if (number[1]) { // number
                     obj.push([0, parseFloat(number[1]), number[2] || '']);
                     parseCSS(number[3], obj);
